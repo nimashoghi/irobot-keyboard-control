@@ -16,7 +16,7 @@ import struct = require("python-struct")
 //#region Settings
 const SERIAL = process.env.ROBOT_SERIAL ?? "/dev/ttyUSB0"
 const BAUD_RATE = parseInt(process.env.ROBOT_BAUD ?? "115200")
-
+const KEY_DEBOUNCE_TIME = parseInt(process.env.KEY_DEBOUNCE_TIME ?? "100")
 const VELOCITY = parseInt(process.env.ROBOT_VELOCITY ?? "200")
 const ROTATION = parseInt(process.env.ROBOT_ROTATION ?? "300")
 //#endregion
@@ -103,7 +103,7 @@ export const main = async () => {
                 merge(
                     observable,
                     observable.pipe(
-                        debounceTime(50),
+                        debounceTime(KEY_DEBOUNCE_TIME),
                         map(() => "stop" as const),
                     ),
                 ),
