@@ -51,7 +51,7 @@ export const executeCommand = async (
 const packMovementData = (velocity: number, rotation: number) =>
     struct.pack(">Bhh", 0x91, velocity + rotation / 2, velocity - rotation / 2)
 
-const jumpPacket = () => Buffer.from([0x8c, 0x3, 0x1, 0x40, 0x10, 0x8d, 0x3])
+const beepPacket = () => Buffer.from([0x8c, 0x3, 0x1, 0x40, 0x10, 0x8d, 0x3])
 
 const getPacketData = (key: Key | "stop", lastKey: "up" | "down") => {
     switch (key) {
@@ -67,8 +67,8 @@ const getPacketData = (key: Key | "stop", lastKey: "up" | "down") => {
                 (lastKey === "down" ? -1 : 1) * VELOCITY,
                 -ROTATION,
             )
-        case "jump":
-            return jumpPacket()
+        case "beep":
+            return beepPacket()
         case "up":
             return packMovementData(VELOCITY, 0)
         case "stop":

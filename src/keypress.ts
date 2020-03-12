@@ -1,13 +1,13 @@
 import readline from "readline"
 import {Observable} from "rxjs"
 
-export type Key = "up" | "down" | "right" | "left" | "jump"
+export type Key = "up" | "down" | "right" | "left" | "beep"
 const keys = {
     [Buffer.from([0x1b, 0x5b, 0x41]).toString()]: "up",
     [Buffer.from([0x1b, 0x5b, 0x42]).toString()]: "down",
     [Buffer.from([0x1b, 0x5b, 0x43]).toString()]: "right",
     [Buffer.from([0x1b, 0x5b, 0x44]).toString()]: "left",
-    [Buffer.from([0x20]).toString()]: "jump",
+    [Buffer.from([0x20]).toString()]: "beep",
 } as const
 
 export const arrowKeyListener = () =>
