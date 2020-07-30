@@ -7,14 +7,14 @@ const PORT = parseInt(process.env.PORT ?? "5239")
 //#endregion
 
 export const main = async () => {
-    // const connection = createConnetion()
+    const connection = createConnetion()
 
     const server = createServer(socket => {
         socket.on("data", async buffer => {
             console.log(
                 `Executing the following  command: ${buffer.toString("hex")}`,
             )
-            // await executeCommand(connection, buffer)
+            await executeCommand(connection, buffer)
         })
     })
     server.listen(PORT, LISTEN_HOST, () => {
