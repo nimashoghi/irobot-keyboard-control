@@ -14,7 +14,8 @@
     ],
     "extensions": [
         "esbenp.prettier-vscode",
-        "wallabyjs.quokka-vscode",
-        "esbenp.prettier-vscode"
+        "visualstudioexptteam.vscodeintellicode",
+        "esbenp.prettier-vscode",
+        "wallabyjs.quokka-vscode"
     ]
 }
